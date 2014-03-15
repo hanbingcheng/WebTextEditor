@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<!-- Include *at least* the core style and default theme -->
+<link href="assets/sh/css/shCore.css" rel="stylesheet" type="text/css" />
+<link href="assets/sh/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<form method="post">
+    <textarea id="content" name="content" style="width:100%"></textarea>
+</form>
+<div class="text-center" style="margin-top:10px;">
+	<button type="submit" class="btn btn-primary btn-lg" id="submit">Submit</button>
+</div>
+<div id="result">
+<pre class="brush: js">
+function foo()
+{
+}
+</pre>
+</div>
+
+</body>
+<!-- Include required JS files -->
+<script src="assets/jquery/jquery.min.js"></script>
+<script src="assets/tinymce/tinymce.min.js"></script>
+<script src="assets/sh/js/shCore.js"></script>
+<script src="assets/sh/js/shBrushJScript.js"></script>
+<script src="assets/sh/js/ios-orientationchange-fix.js"></script>
+<script src="assets/sh/js/shBrushAppleScript.js"></script>
+<script src="assets/sh/js/shBrushAS3.js"></script>
+<script src="assets/sh/js/shBrushBash.js"></script>
+<script src="assets/sh/js/shBrushColdFusion.js"></script>
+<script src="assets/sh/js/shBrushCpp.js"></script>
+<script src="assets/sh/js/shBrushCSharp.js"></script>
+<script src="assets/sh/js/shBrushCss.js"></script>
+<script src="assets/sh/js/shBrushDelphi.js"></script>
+<script src="assets/sh/js/shBrushDiff.js"></script>
+<script src="assets/sh/js/shBrushErlang.js"></script>
+<script src="assets/sh/js/shBrushGroovy.js"></script>
+<script src="assets/sh/js/shBrushJava.js"></script>
+<script src="assets/sh/js/shBrushJavaFX.js"></script>
+<script src="assets/sh/js/shBrushJScript.js"></script>
+<script src="assets/sh/js/shBrushPerl.js"></script>
+<script src="assets/sh/js/shBrushPhp.js"></script>
+<script src="assets/sh/js/shBrushPlain.js"></script>
+<script src="assets/sh/js/shBrushPython.js"></script>
+<script src="assets/sh/js/shBrushRuby.js"></script>
+<script src="assets/sh/js/shBrushSass.js"></script>
+<script src="assets/sh/js/shBrushScala.js"></script>
+<script src="assets/sh/js/shBrushSql.js"></script>
+<script src="assets/sh/js/shBrushVb.js"></script>
+<script src="assets/sh/js/shBrushXml.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+    theme: "modern",
+    plugins: [
+        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save table contextmenu directionality",
+        "emoticons template paste textcolor sh4tinymce code"
+    ],
+    toolbar1: "insertfile undo redo  | styleselect formatselect fontselect fontsizeselect  | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",
+    toolbar2: "print preview | link image media | forecolor backcolor emoticons | sh4tinymce | code  ",
+    image_advtab: true,
+    templates: [
+        {title: 'Test template 1', content: 'Test 1'},
+        {title: 'Test template 2', content: 'Test 2'}
+    ],	
+});
+$('#submit').on('click', function(e) {
+	e.preventDefault();
+	var content = tinymce.activeEditor.getContent();
+	$('#result').html(content);
+	SyntaxHighlighter.highlight()
+});
+
+SyntaxHighlighter.all();
+</script>
+</html>
